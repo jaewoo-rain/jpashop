@@ -1,5 +1,6 @@
 package com.example.jpashop.domain.item;
 
+import com.example.jpashop.domain.Category;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,7 +23,7 @@ public abstract class Item {
     private int price;
     private int stockQuantity;
 
-
-    private List<category> categories = new ArrayList<>();
+    @ManyToMany(mappedBy = "items")
+    private List<Category> categories = new ArrayList<>();
 
 }

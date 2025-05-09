@@ -4,20 +4,22 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import static jakarta.persistence.FetchType.*;
+
 @Entity
 @Getter
 @Setter
-public class Delibery {
+public class Delivery {
 
     @Id
     @GeneratedValue
-    @Column(name = "delibery_id")
+    @Column(name = "delivery_id")
     private Long id;
 
-    @OneToOne(mappedBy = "delibery")
+    @OneToOne(mappedBy = "delivery", fetch = LAZY)
     // 1대1관계에서 FK누구한테 둘것인가?
     // 접근 많이 하는곳에 둔다
-    // delibery보다 order를 더 많이 조회할듯
+    // delivery보다 order를 더 많이 조회할듯
     private Order order;
 
     @Embedded // 내장타입
